@@ -1,14 +1,14 @@
 {
-  "name": "algorithm",
+  "name": "weekly-algorithm",
   "version": "1.0.0",
   "description": "",
-  "main": "src/beginnerGuide/richestCustomerWealth.js",
+  "main": "src/LKHcoding/beginnerGuide/richestCustomerWealth.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.8"
   }
 }
