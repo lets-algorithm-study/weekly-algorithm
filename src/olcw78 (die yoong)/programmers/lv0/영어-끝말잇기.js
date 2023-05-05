@@ -11,9 +11,12 @@ function solution(n, words) {
       }
 
       const firstCh = words[stride].charAt(0);
-      const lastCh = words[stride - 1]?.charAt(words[stride - 1]?.length - 1);
-      if (lastCh && firstCh !== lastCh) {
-        return [ j + 1, i + 1 ];
+      const lastWord = words[stride - 1];
+      if (lastWord) {
+        const lastCh = lastWord.charAt(lastWord.length - 1);
+        if (lastCh && firstCh !== lastCh) {
+          return [ j + 1, i + 1 ];
+        }
       }
 
       cache.push(words[stride]);
@@ -22,12 +25,3 @@ function solution(n, words) {
 
   return [ 0, 0 ];
 }
-
-const res = solution(3, [ "tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank" ]);
-console.log(res);
-
-const a2 = solution(5, [ "hello", "observe", "effect", "take", "either", "recognize", "encourage", "ensure", "establish", "hang", "gather", "refer", "reference", "estimate", "executive" ]);
-console.log(a2);
-
-const a3 = solution(2, [ "hello", "one", "even", "never", "now", "world", "draw" ]);
-console.log(a3);
