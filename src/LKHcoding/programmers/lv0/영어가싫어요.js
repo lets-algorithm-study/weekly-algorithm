@@ -24,4 +24,6 @@ function solution(numbers) {
     });
   }
   return +answer;
+  // replaceAll로 0부터 9까지 도는 방법도 있음
+  // 정규표현식으로 하는 방법도 있음
 }
