@@ -1,3 +1,4 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/120852
 function isPrimeNumber(n) {
   for (let i = 2; i * i <= n; ++i) {
     if (n % i === 0) return false;
@@ -5,10 +6,11 @@ function isPrimeNumber(n) {
   return true;
 }
 
+const answer = new Set();
+
 function solution(n) {
   if (isPrimeNumber(n)) return [n];
 
-  const answer = new Set();
   let next = 2;
   while (n > 0 && !isPrimeNumber(n)) {
     if (!isPrimeNumber(next)) {
