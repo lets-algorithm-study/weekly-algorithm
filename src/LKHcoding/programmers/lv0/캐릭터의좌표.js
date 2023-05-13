@@ -16,13 +16,11 @@ function solution(keyinput, board) {
         answer[0] += 1;
       }
     }
-
     if (item === 'up') {
       if (maxY > Math.abs(answer[1]) || answer[1] <= 0) {
         answer[1] += 1;
       }
     }
-
     if (item === 'down') {
       if (maxY > Math.abs(answer[1]) || answer[1] >= 0) {
         answer[1] -= 1;
