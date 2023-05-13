@@ -1,5 +1,6 @@
 https://school.programmers.co.kr/learn/courses/30/lessons/12921
 
+//에라토스테네스의 체
 // array fill로 숫자를 채우고 소수가 아닌 친구를 거르는 작업
 // 2의 배수 , 3을 제외한 나머지 3의 배수,
 function solution(n) {
