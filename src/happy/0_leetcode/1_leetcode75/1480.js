@@ -38,3 +38,7 @@ var runningSum = function (nums) {
 
   return result;
 };
+
+
+ttt = 0;
+console.log(ttt);
