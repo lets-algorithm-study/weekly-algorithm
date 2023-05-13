@@ -12,7 +12,7 @@ function solution(s) {
     }
   });
 
-  return stack.reduce((acc, crr) => acc + crr, 0);
+  return stack.reduce((acc, item) => acc + item, 0);
 
   // let splitArr = s.split(' ').map(item => +item);
   //
