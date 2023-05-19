@@ -1,4 +1,4 @@
-https://school.programmers.co.kr/learn/courses/30/lessons/12921
+// https://school.programmers.co.kr/learn/courses/30/lessons/12921
 
 //에라토스테네스의 체
 // array fill로 숫자를 채우고 소수가 아닌 친구를 거르는 작업
