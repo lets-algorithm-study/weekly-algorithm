@@ -6,10 +6,7 @@ function solution(array, n) {
   let pos = 0;
   for (let i = 0; i < array.length; ++i) {
     const cur = Math.abs(array[i] - n);
-    console.log(`#${i}: ${array[i]} -> ${cur}`);
-
     if (closest > cur) {
-
       closest = cur;
       pos = i;
     }
