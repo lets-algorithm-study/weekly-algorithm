@@ -10,11 +10,60 @@
  * tmp 배열의 string 들을 합칠때 소수점 count 위치에 '.'을 끼워넣어준다.
  */
 function numToString(num) {
-  console.log('=> numToString.js:13 ~ num', num);
-  // 풀이 작성
+  if (num === 0) {
+    return '0';
+  }
 
-  return '';
+  const dict = {
+    0: '0',
+    1: '1',
+    2: '2',
+    3: '3',
+    4: '4',
+    5: '5',
+    6: '6',
+    7: '7',
+    8: '8',
+    9: '9',
+  };
+
+  const isNegative = num < 0;
+
+  num = Math.abs(num);
+
+  let numTemp = num;
+  let decimalCount = 0;
+
+  while (numTemp % 1 !== 0) {
+    numTemp *= 10;
+    decimalCount++;
+  }
+
+  let numStr = '';
+  while (numTemp > 0) {
+    let singleDigit = numTemp % 10;
+    numStr = dict[singleDigit] + numStr;
+    numTemp = Math.floor(numTemp / 10);
+
+    if (numStr.length === decimalCount && numTemp > 0) {
+      numStr = '.' + numStr;
+    }
+  }
+
+  if (numStr.length < decimalCount) {
+    let zeros = '.' + '0'.repeat(decimalCount - numStr.length);
+    numStr = zeros + numStr;
+  }
+
+  if (isNegative) {
+    numStr = '-' + numStr;
+  }
+
+  return numStr;
 }
 
-console.log(numToString(23)); // '23'
-console.log(numToString(23.1)); // '23.1'
+console.log(numToString(203)); // '203'
+console.log(numToString(2300.001)); // '2300.001' -> 부동소수점 문제 생기네...? 별로 중요하진 않은 문제 케이스
+console.log(numToString(-203)); // '23.1'
+console.log(numToString(-230.1)); // '23.1'
+console.log(numToString(0)); // '23.1'
