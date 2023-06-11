@@ -1,5 +1,6 @@
 // 참고 - https://tesseractjh.tistory.com/194
-// 이미지 참조 - https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=occidere&logNo=220818393375
+// 이미지 참조
+// https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=occidere&logNo=220818393375
 
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 input = require('fs').readFileSync(filePath).toString().trim().split('\n');
@@ -45,8 +46,8 @@ function solutionDfsStack(N, graph) {
 }
 
 // Stack을 이용한 DFS 함수
-function dfsStack(graph, visited, node) {
-  let stack = [node];
+function dfsStack(graph, visited, startNode) {
+  let stack = [startNode];
 
   while (stack.length > 0) {
     const node = stack.pop();
