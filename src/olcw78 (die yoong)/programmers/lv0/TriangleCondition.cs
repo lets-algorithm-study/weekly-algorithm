@@ -1,5 +1,4 @@
-using System;
-using System.Linq;
+// https://school.programmers.co.kr/learn/courses/30/lessons/120902 
 
 namespace Programmers_LV0; 
 
