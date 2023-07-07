@@ -1,3 +1,4 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/120902
 namespace Programmers_LV0;
 
 public class OXQuiz {
