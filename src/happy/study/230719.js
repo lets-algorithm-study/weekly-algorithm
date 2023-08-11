@@ -13,6 +13,12 @@
     ex.3) num=115 >>> "5의 배수입니다."
  */
 
+function printMultiple(num) {
+  if (num % 2 === 0) console.log('2의 배수입니다.');
+  if (num % 3 === 0) console.log('3의 배수입니다.');
+  if (num % 5 === 0) console.log('5의 배수입니다.');
+  if (num % 7 === 0) console.log('7의 배수입니다.');
+}
 
 /**
  Q. 2
@@ -27,10 +33,10 @@
     ex.3) num=false >>> '숫자랑 문자열이 아닙니다.'
  */
 
-function changeString(num){
-    if(typeof num !== "number" && typeof num !== "string") throw new Error("숫자가 아닙니다.");
+function changeString(num) {
+  if (typeof num !== 'number' && typeof num !== 'string') throw new Error('숫자가 아닙니다.');
 
-    return num.toString();
+  return num.toString();
 }
 
 /**
@@ -48,15 +54,18 @@ Q. 3
  */
 
 // S. 1
-function find9(num){
-    if(typeof num !== "number") throw new Error("숫자가 아닙니다.");
+function find9(num) {
+  if (typeof num !== 'number') throw new Error('숫자가 아닙니다.');
 
-    let result = 0;
-    num.toString().split("").forEach((item) => {
-        if(item === "9") result += 1;
-    })
+  let result = 0;
+  num
+    .toString()
+    .split('')
+    .forEach(item => {
+      if (item === '9') result += 1;
+    });
 
-    return result;
+  return result;
 }
 
 /**
@@ -72,46 +81,45 @@ Q. 4
  */
 
 // S. 1 - split, for 사용시, 답안
-function changeString(name){
-    if(typeof name !== "string") throw new Error("문자열이 아닙니다.")
-    const tmp = name.split("");
+function changeString(name) {
+  if (typeof name !== 'string') throw new Error('문자열이 아닙니다.');
+  const tmp = name.split('');
 
-    let result = "";
-    
-    for(let i=0; i < tmp.length; i++){
-        let item = tmp[i];
+  let result = '';
 
-        if(item !== "t" && item !== "e" && item !== "s"){
-            result += item;
-        }
+  for (let i = 0; i < tmp.length; i++) {
+    let item = tmp[i];
+
+    if (item !== 't' && item !== 'e' && item !== 's') {
+      result += item;
     }
- 
+  }
 
-    return result;
+  return result;
 }
 
 // S. 1 - split, forEach 사용시, 답안
-function changeString2(name){
-    if(typeof name !== "string") throw new Error("문자열이 아닙니다.")
-    const tmp = name.split("");
+function changeString2(name) {
+  if (typeof name !== 'string') throw new Error('문자열이 아닙니다.');
+  const tmp = name.split('');
 
-    let result = "";
-    
-    tmp.forEach((item) => {
-        if(item !== "t" && item !== "e" && item !== "s"){
-            result += item;
-        }
-    })
+  let result = '';
 
-    return result;
+  tmp.forEach(item => {
+    if (item !== 't' && item !== 'e' && item !== 's') {
+      result += item;
+    }
+  });
+
+  return result;
 }
 
 // S. 1 - split, filter 사용시, 답안
-function changeString3(name){
-    if(typeof name !== "string") throw new Error("문자열이 아닙니다.")
-    const tmp = name.split("");
-    
-    let result = tmp.filter((item) => item !== "t" && item !== "e" && item !== "s")
+function changeString3(name) {
+  if (typeof name !== 'string') throw new Error('문자열이 아닙니다.');
+  const tmp = name.split('');
 
-    return result.join("");
+  let result = tmp.filter(item => item !== 't' && item !== 'e' && item !== 's');
+
+  return result.join('');
 }
