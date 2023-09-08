@@ -27,3 +27,5 @@ yarn-error.log*
 .idea/
 
 .vscode/settings.json
+
+src/LKHcoding/utils/getTicketLinks.js

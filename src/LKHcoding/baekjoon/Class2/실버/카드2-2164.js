@@ -10,7 +10,7 @@ function solution(N) {
   let tail = N;
 
   while (head < tail - 1) {
-    // 맨 앞 카드를 버린다.
+    // 맨 앞(윗) 카드를 버린다.
     head++;
 
     // 그 다음 카드를 덱의 맨 뒤로 옮긴다.
