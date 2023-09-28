@@ -1,6 +1,6 @@
 {
   "singleQuote": true,
-  "printWidth": 95,
+  "printWidth": 85,
   "arrowParens": "avoid",
   "singleAttributePerLine": true
 }
