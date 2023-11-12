@@ -7,13 +7,21 @@ const coins = input.slice(1).map(Number);
 solution(n, k, coins);
 
 function solution(n, k, coins) {
-  let count = 0;
-  let amount = k;
+  const availableCoins = coins.filter(item => item <= k);
 
-  for (let i = n - 1; i >= 0; i--) {
-    if (coins[i] <= amount) {
-      count += Math.floor(amount / coins[i]);
-      amount %= coins[i];
+  let amount = k;
+  let count = 0;
+
+  for (let i = availableCoins.length - 1; i >= 0; i--) {
+    const item = availableCoins[i];
+
+    if (item <= amount) {
+      count += Math.trunc(amount / item);
+      amount = amount % item;
+    }
+
+    if (amount === 0) {
+      break;
     }
   }
 
