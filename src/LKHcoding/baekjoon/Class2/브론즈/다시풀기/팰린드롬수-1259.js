@@ -6,11 +6,11 @@ const _palindromes = input.filter(item => item !== '0');
 solution(_palindromes);
 
 function solution(palindromes) {
-  const chars = palindromes.map(item => item.split(''));
+  const charsArr = palindromes.map(item => item.split(''));
 
   const answer = [];
 
-  chars.forEach(item => {
+  charsArr.forEach(item => {
     for (let i = 0; i <= item.length - 1; i++) {
       if (item[i] === item[item.length - 1 - i]) {
         if (i === item.length - 1) {
