@@ -6,11 +6,10 @@ function isPrimeNumber(n) {
   return true;
 }
 
-const answer = new Set();
-
 function solution(n) {
   if (isPrimeNumber(n)) return [n];
 
+  const answer = new Set();
   let next = 2;
   while (n > 0 && !isPrimeNumber(n)) {
     if (!isPrimeNumber(next)) {
