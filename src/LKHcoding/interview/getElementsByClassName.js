@@ -1,21 +1,21 @@
 function getElementsByClassName(className) {
-  const body = [...document.body.children];
-
   const result = [];
 
-  const exploreNode = els => {
-    for (const el of els) {
-      if (el.classList.contains(className)) {
-        result.push(el);
-      }
+  const dfs = node => {
+    if (node.classList && node.classList.contains(className)) {
+      result.push(node);
+    }
 
-      if (el.children.length !== 0) {
-        exploreNode([...el.children]);
-      }
+    if (!node.children) {
+      return;
+    }
+
+    for (const child of node.children) {
+      dfs(child);
     }
   };
 
-  exploreNode(body);
+  dfs(document.body);
 
   return result;
 }
