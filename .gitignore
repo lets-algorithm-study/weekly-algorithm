@@ -30,4 +30,4 @@ yarn-error.log*
 
 .vscode/settings.json
 
-src/LKHcoding/utils/getTicketLinks.js
+src/LKHcoding/utils
