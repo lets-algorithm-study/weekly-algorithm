@@ -4,7 +4,7 @@
 function solution(numbers) {
     const result = new Set();
     for (let i = 0; i < numbers.length; i++) {
-        for (let j = 0; j < numbers.length; j++) {
+        for (let j = i; j < numbers.length; j++) {
             if (i === j) continue;
 
             const sum = numbers[i] + numbers[j];

@@ -3,7 +3,9 @@
  * @param arr {number[]}
  */
 function solution(arr) {
-    return [...new Set(arr)].sort((a, b) => b - a);
+    const unq = [...new Set(arr)]
+    unq.sort((a, b) => b - a);
+    return unq
 }
 
 const r1 = solution([4, 2, 2, 1, 3, 4]);
