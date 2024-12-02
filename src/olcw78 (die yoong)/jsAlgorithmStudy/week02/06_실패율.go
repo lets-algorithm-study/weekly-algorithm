@@ -1,4 +1,4 @@
-package main
+package week02
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ type Res struct {
 	failRate float64
 }
 
-func solution(N int, stages []int) []int {
+func solution06(N int, stages []int) []int {
 	fails := make([]Res, 0, N)
 
 	for i := 1; i <= N; i++ {
@@ -63,7 +63,7 @@ type Res2 struct {
 	failRate float64
 }
 
-func solution1(N int, stages []int) []int {
+func solution06_1(N int, stages []int) []int {
 	failRates := make([]Res2, N)
 	for stage := 1; stage <= N; stage++ {
 		total, fail := 0, 0
@@ -98,16 +98,16 @@ func solution1(N int, stages []int) []int {
 	return result
 }
 
-func main() {
-	r1 := solution(5, []int{2, 1, 2, 6, 2, 4, 3, 3})
+func Run06() {
+	r1 := solution06(5, []int{2, 1, 2, 6, 2, 4, 3, 3})
 	fmt.Println(r1)
 
-	r2 := solution(4, []int{4, 4, 4, 4, 4})
+	r2 := solution06(4, []int{4, 4, 4, 4, 4})
 	fmt.Println(r2)
 
-	r3 := solution(5, []int{2, 1, 2, 6, 2, 4, 3, 3})
+	r3 := solution06(5, []int{2, 1, 2, 6, 2, 4, 3, 3})
 	fmt.Println(r3)
 
-	r4 := solution(4, []int{4, 4, 4, 4, 4})
+	r4 := solution06(4, []int{4, 4, 4, 4, 4})
 	fmt.Println(r4)
 }
