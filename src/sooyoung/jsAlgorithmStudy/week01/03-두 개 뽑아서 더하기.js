@@ -9,6 +9,8 @@ function solution(numbers) {
   return Array.from(answer).sort((a, b) => a - b);
 }
 
+// 시간복잡도: O(n^3)
+
 // set이 나은건가 배열에서 바로 찾는게 나은건가
 
 // function solution(numbers) {
@@ -24,3 +26,5 @@ function solution(numbers) {
 //
 //   return answer.sort((a, b) => a - b)
 // }
+
+// 시간복잡도: O(n^2 log n)
