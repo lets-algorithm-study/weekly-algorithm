@@ -1,4 +1,13 @@
 /**
+ * 풀이
+ *   (, {, [ 은 stack 에 넣고
+ *   ), }, ] 은 stack pop 으로 비교 하여 쌍이 맞는지 체크
+ * 분석
+ *   TC: O(N^2)
+ *   - 회전해주는 루프: O(N)
+ *   - 내부 stack push/pop 하며 쌍이 맞는지 체크하는 루프: O(M)
+ *   - O(N * M) -> O(N^2)
+ *   SC: O(N)
  * @param s {string}
  * @return {number}
  * */

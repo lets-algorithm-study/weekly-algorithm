@@ -1,7 +1,20 @@
 
 
 
-/** @param n {number} */
+/**
+ * 풀이
+ *   10 -> 2진수 로 변환하기
+ * 분석
+ *   TC: O(N)
+ *   - 2진수 변환: O(N)
+ *   - 문자열 합치기: O(M)
+ *   - O(N + M) -> O(N)
+ *   SC: O(N)
+ *   - 추가공간 res(int[]) 밖에 없음
+ *
+ * @param n {number}
+ * @returns {string}
+ */
 function solution(n) {
     const res = []
     while (n !== 1) {

@@ -1,7 +1,19 @@
 /**
+ * 풀이
  * yet: 스테이지에 도달했으나 아직 클리어하지 못한 플레이어의 수
  * reached: 스테이지에 도달한 플레이어의 수
  * 실패율 정의 : yet / reached
+ * 주어진 stages 를 돌며
+ *
+ * 분석
+ * 시간 복잡도: O(N^2)
+ *   - 2중 루프: O(N^2)
+ *   - filter: O(M^2)
+ *   - 오름차순 정렬: O(L logL)
+ *   - O(N^2 + M^2 + L logL) -> O(2N^2) -> O(N^2)
+ * 공간 복잡도: O(N)
+ *   주어진 stages: number[] + 지울 대상 배열 + res 배열 -> O(3N) --> O(N)
+ *
  * @param N {number} 전체 스테이지 개수
  * @param stages {number[]} 사용자가 현재 멈춰 있는 스테이지의 번호가 담긴 배열
  */
