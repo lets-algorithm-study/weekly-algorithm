@@ -34,15 +34,22 @@ function solution(s) {
  */
 function isCorrect(str) {
     const stack = []
-    for (const s of str) {
-        if (s === "[" || s === "(" || s === "{") {
-            stack.push(s)
-        } else if (s === "]" || s === ")" || s === "}") {
+
+    /** @type {(last: string, ch: string) => boolean} */
+    const isLastAndCurrentMatch = (last, ch) => {
+        const ok1 = ch === ")" && last === "("
+        const ok2 = ch === "]" && last === "["
+        const ok3 = ch === "}" && last === "{"
+
+        return ok1 || ok2 || ok3
+    }
+
+    for (const ch of str) {
+        if (ch === "[" || ch === "(" || ch === "{") {
+            stack.push(ch)
+        } else if (ch === "]" || ch === ")" || ch === "}") {
             const last = stack.pop()
-            const ok = (s === ")" && last === "(") ||
-                (s === "]" && last === "[") ||
-                (s === "}" && last === "{")
-            if (!ok) return false
+            if (!isLastAndCurrentMatch(last, ch)) return false
         }
     }
 

@@ -19,27 +19,26 @@
  */
 function solution(N, stages) {
     const res = []
-    for (let i = 1; i <= N; i++) {
-        let yet = 0;
-        let reached = 0;
+    for (let i = N; i >= 1; i--) {
+        let yet = 0
+        let reached = 0
 
         const del = []
         for (const [sti, st] of stages.entries()) {
-            reached++;
+            reached++
 
             if (st <= i) {
-                yet++;
-                del.push(sti);
+                yet++
+                del.push(sti)
             }
         }
 
-        stages = stages.filter((_, i) => !del.includes(i));
+        stages = stages.filter((_, i) => !del.includes(i))
 
         const failRate = yet / reached
         res.push({i, failRate})
     }
 
-    res.sort((a, b) => b.failRate - a.failRate)
     return res.map(x => x.i)
 }
 
@@ -55,21 +54,21 @@ console.log(r2)
  * @param stages {number[]}
  */
 function answer(N, stages) {
-    const challegener = new Array(N + 2).fill(0)
+    const challenger = new Array(N + 2).fill(0)
     for (const st of stages) {
-        challegener[st] += 1
+        challenger[st] += 1
     }
 
     const fails = {}
     let total = stages.length
     for (let i = 0; i <= N; i++) {
-        if (challegener[i] === 0) {
+        if (challenger[i] === 0) {
             fails[i] = 0
             continue
         }
 
-        fails[i] = challegener[i] / total
-        total -= challegener[i]
+        fails[i] = challenger[i] / total
+        total -= challenger[i]
     }
 
     const res = Object.entries(fails)

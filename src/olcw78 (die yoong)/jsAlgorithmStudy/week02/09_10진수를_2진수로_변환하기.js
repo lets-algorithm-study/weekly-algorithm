@@ -17,13 +17,12 @@
  */
 function solution(n) {
     const res = []
-    while (n !== 1) {
-        const left = n % 2
+    while (n !== 0) {
+        const remainder = n % 2
         n = Math.floor(n / 2)
-        res.push(String(left))
+        res.push(String(remainder))
     }
 
-    res.push('1')
     return res.reduce((a, b) => b + a, "")
 }
 
