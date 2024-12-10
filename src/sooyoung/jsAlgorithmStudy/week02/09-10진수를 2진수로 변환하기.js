@@ -12,3 +12,4 @@ function solution(decimal) {
 
   return binary;
 }
+// 연산량이 많아졌을때 배열이 유리할 수 있다.

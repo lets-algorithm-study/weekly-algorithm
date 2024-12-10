@@ -82,3 +82,6 @@ function solution(dirs) {
 
   return footprint.size / 2;
 }
+
+
+// [0,0] 을 [5,5] 로 이동해서 하는 것도 괜찮은 방법인것같다.
