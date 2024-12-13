@@ -7,25 +7,25 @@
  * @return {1 | 0}
  */
 function solution1(s) {
-    const stack = [s.at(0)]
+  const stack = [s.at(0)];
 
-    for (const ch of s.slice(1)) {
-        if (stack[stack.length - 1] === ch) {
-            stack.pop()
-            continue
-        }
-
-        stack.push(ch)
+  for (const ch of s.slice(1)) {
+    if (stack[stack.length - 1] === ch) {
+      stack.pop();
+      continue;
     }
 
-    return stack.length === 0 ? 1 : 0
+    stack.push(ch);
+  }
+
+  return stack.length === 0 ? 1 : 0;
 }
 
-const r3 = solution("baabaa")
-console.log(r3)
+const r3 = solution1('baabaa');
+console.log(r3);
 
-const r4 = solution("cdcd")
-console.log(r4)
+const r4 = solution1('cdcd');
+console.log(r4);
 
 /**
  *
@@ -73,9 +73,8 @@ console.log(r4)
 // aa -> [aa]
 // empty -> 1
 
-const r1 = solution("baabaa")
-console.log(r1)
+const r1 = solution('baabaa');
+console.log(r1);
 
-const r2 = solution("cdcd")
-console.log(r2)
-
+const r2 = solution('cdcd');
+console.log(r2);
