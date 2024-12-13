@@ -11,7 +11,7 @@ function solution(n, k) {
         cursor = (cursor + k) % q.length;
     }
 
-    return q[0];
+    return q;
 }
 
 const r1 = solution(5, 2);
