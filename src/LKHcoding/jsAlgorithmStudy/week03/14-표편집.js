@@ -62,7 +62,7 @@ function newSolution(n, k, cmd) {
   // 예: n=3일 때
   // prev: [-1, 0, 1, 2] (길이: n+1)
   // - 인덱스 0: 더미(-1), 1: A의 이전(0), 2: B의 이전(1), 3: C의 이전(2)
-  const prev = [...new Array(n + 1)].map((_, i) => i - 1);
+  const prev = [...new Array(n + 2)].map((_, i) => i - 1);
 
   // next: [1, 2, 3, 4] (길이: n+1)
   // - 인덱스 0: A의 다음(1), 1: B의 다음(2), 2: C의 다음(3), 3: 더미(4)
@@ -90,7 +90,7 @@ function newSolution(n, k, cmd) {
       // 마지막 행이 삭제된 경우(nextRow가 더미 테일보다 큼)
       // -> 이전 행으로 이동
       // 그 외의 경우 -> 다음 행으로 이동
-      current = nextRow > n - 1 ? prevRow : nextRow;
+      current = nextRow > n ? prevRow : nextRow;
     },
 
     // 'Z' (최근 삭제 행 복구)
