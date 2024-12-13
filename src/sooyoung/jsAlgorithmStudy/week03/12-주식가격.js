@@ -37,10 +37,26 @@ function solution(prices) {
 
 // 길이를 확정한 주식은 이후 계산에서 제외하기가 연산 줄이기의 핵심이다.
 // 10만이니까 O(N)으로 푸는게 좋다.
+// 근데 이게 O(N)인가?
 
 function solution(prices) {
   const n = prices.length;
   const answer = new Array(n).fill(0);
 
   const stack = [0];
+
+  for(let i = 1; i < n; i++) {
+    while(stack.length > 0 && prices[stack[stack.length - 1]] > prices[i]) {
+      const top = stack.pop();
+      answer[top] = i - top;
+    }
+    stack.push(i);
+  }
+
+  while(stack.length > 0) {
+    const top = stack.pop();
+    answer[top] = n - 1 - top;
+  }
+
+  return answer;
 }
