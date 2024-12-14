@@ -45,3 +45,32 @@
 // 사라진 인형은 4개 입니다.
 //
 //   crane_game_104.jpg
+
+// 크레인이 돌면서 모든 열을 탐색하면서 0이 아닌 값을 만나면 stack에 넣고 0으로 만든다.
+// stack의 마지막 값과 현재 값을 비교하여 같으면 stack.pop()을 하고 answer에 2를 더한다.
+// stack이 비어있으면 stack.push()를 한다.
+
+function solution(board, moves) {
+  let answer = 0;
+  let stack = [];
+  let boardLength = board.length;
+  let movesLength = moves.length;
+
+  for (let i = 0; i < movesLength; i++) {
+    let move = moves[i] - 1;
+    for (let j = 0; j < boardLength; j++) {
+      if (board[j][move] !== 0) {
+        if (stack.length > 0 && stack[stack.length - 1] === board[j][move]) {
+          stack.pop();
+          answer += 2;
+        } else {
+          stack.push(board[j][move]);
+        }
+        board[j][move] = 0;
+        break;
+      }
+    }
+  }
+
+  return answer;
+}
