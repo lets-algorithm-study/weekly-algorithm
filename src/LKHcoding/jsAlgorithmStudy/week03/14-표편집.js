@@ -60,8 +60,8 @@ function newSolution(n, k, cmd) {
 
   // 각 행의 이전/다음 위치를 저장하는 배열
   // 예: n=3일 때
-  // prev: [-1, 0, 1, 2] (길이: n+1)
-  // - 인덱스 0: 더미(-1), 1: A의 이전(0), 2: B의 이전(1), 3: C의 이전(2)
+  // prev: [-1, 0, 1, 2, 3] (길이: n+1)
+  // - 인덱스 0: 더미(-1), 1: A의 이전(0), 2: B의 이전(1), 3: C의 이전(2), 4: 더미(3)
   const prev = [...new Array(n + 2)].map((_, i) => i - 1);
 
   // next: [1, 2, 3, 4] (길이: n+1)
@@ -132,6 +132,7 @@ function newSolution(n, k, cmd) {
 
   // 최종 결과 문자열 생성
   const answer = Array(n).fill('O'); // 모든 행을 'O'로 초기화
+
   deletedStack.forEach(row => {
     answer[row - 1] = 'X'; // 삭제된 행만 'X'로 표시 (인덱스를 0부터로 조정)
   });
