@@ -8,15 +8,17 @@
  * 100 - progress = rest
  * rest / speed = day to complete
  * 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어짐.
+ * 
+ * 시간 복잡도: O(N^2)
+ * 
  * @param progresses {number[]} 배포 순서대로 작업 진도
  * @param speeds {number[]} 각 작업의 개발 속도
  */
 function solution(progresses, speeds) {
     // forof 로 돌리게 progresses, speeds 묶기 (zip)
-    const zip = progresses.map((p, i) => ({p, s: speeds[i]}));
     // 배포 가능한 날짜를 계산
     // expectedDate = ceil((100 - progress) / speed)
-    const expected = zip.map(({p, s}) => Math.ceil((100 - p) / s));
+    const expected = progresses.map((p, i) => Math.ceil((100 - p) / speeds[i]));
     const release = [];
     let cursor = 0;
     // expected 모두 소진.
@@ -57,3 +59,30 @@ const r2 = solution(
     [1, 1, 1, 1, 1, 1]
 );
 console.log(r2);
+
+
+/**
+ *  TC: O(N)
+ * @param progresses { number[] } 배포 순서대로 작업 진도
+ * @param speeds { number[] } 각 작업의 개발 속도
+ */
+function solution1(progresses, speeds) {
+    const len = progresses.length;
+    // 각 작업의 배포 가능일 계산
+    const daysLeft = progresses.map((p, i) => Math.ceil((100 - p) / speeds[i]));
+    let cnt = 0; // 배포할 작업 수 (몰아서 하기) 카운트
+    let maxDay = daysLeft[0]; // 현재 배포될 작업 중 가장 늦게 배포될 작업의 가능일
+    const answer = [];
+    for (let i = 0; i < len; i++) {
+        if (daysLeft[i] <= maxDay) { // 배포 가능일이 가장 늦은 배포일보다 빠르면
+            cnt++;
+        } else { // 배포 가능일이 기준 배포일보다 느리면
+            answer.push(cnt);
+            cnt = 1;
+            maxDay = daysLeft[i];
+        }
+    }
+
+    answer.push(cnt);
+    return answer;
+}
