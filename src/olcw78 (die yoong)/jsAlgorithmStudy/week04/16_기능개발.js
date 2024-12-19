@@ -9,7 +9,7 @@
  * rest / speed = day to complete
  * 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어짐.
  * 
- * 시간 복잡도: O(N^2)
+ * 시간 복잡도: O(N * M)
  * 
  * @param progresses {number[]} 배포 순서대로 작업 진도
  * @param speeds {number[]} 각 작업의 개발 속도
