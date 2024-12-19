@@ -48,7 +48,7 @@
 
 // 크레인이 돌면서 모든 열을 탐색하면서 0이 아닌 값을 만나면 stack에 넣고 0으로 만든다.
 // stack의 마지막 값과 현재 값을 비교하여 같으면 stack.pop()을 하고 answer에 2를 더한다.
-// stack이 비어있으면 stack.push()를 한다.
+// 같지않으면 stack에 넣는다.
 
 function solution(board, moves) {
   let answer = 0;
