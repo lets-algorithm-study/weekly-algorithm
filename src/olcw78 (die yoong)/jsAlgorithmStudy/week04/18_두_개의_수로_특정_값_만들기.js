@@ -8,7 +8,7 @@
  * 앞 인덱스를 고정시키고 (for-i)
  * 뒷 인덱스를 남은 길이만큼 이동시켜서 (for-j)
  * arr[i]와 arr[j] 를 더한 값과 target 을 비교하는 
- * O(N^2) 무식한 방법.
+ * TC: O(N^2) 무식한 방법.
  *
  * @param {number[]} arr
  * @param {number} target
@@ -54,8 +54,10 @@ function countSort(arr, target) {
 }
 
 /**
+ * TC
  * O(N^2) 완전탐색 로직에서 
  * 뒷 인덱스를 빈도수로 맵핑된 해시테이블을 이용하여 O(N)으로 처리.
+ * n 을 맵핑하고, 차 인 target - n 이 이미 맵핑되어있으면 성공!
  * @param {number[]} arr
  * @param {number} target
  * @returns {boolean}

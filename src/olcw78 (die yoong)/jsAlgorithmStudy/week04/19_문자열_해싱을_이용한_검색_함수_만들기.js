@@ -6,6 +6,12 @@
  * hash(s)
  * p = 31
  *
+ * TC: O(N + M)
+ *   hash 계산 O(N)
+ *   query 리스트 확인 O(M)
+ *
+ * SC: O(N)
+ *
  * @param stringList {string[]}
  * @param queryList {string[]}
  * @return {boolean[]}
