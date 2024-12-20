@@ -4,10 +4,10 @@
  * 2. 1 <= n[i] <= 10,000
  * 3. arr의 원소는 고유함
  * 4. 1 <= target <= 20,000
- * 
+ *
  * 앞 인덱스를 고정시키고 (for-i)
  * 뒷 인덱스를 남은 길이만큼 이동시켜서 (for-j)
- * arr[i]와 arr[j] 를 더한 값과 target 을 비교하는 
+ * arr[i]와 arr[j] 를 더한 값과 target 을 비교하는
  * TC: O(N^2) 무식한 방법.
  *
  * @param {number[]} arr
@@ -25,19 +25,19 @@ function solution(arr, target) {
     return false;
 }
 
-const r1 = solution([1, 2, 3, 4, 8], 6);
-console.log(r1);
-
-const r2 = solution([2, 3, 5, 9], 10);
-console.log(r2);
-
-const r3 = solution([1, 2, 1, 2, 1], 100);
-console.log(r3);
-
-const r4 = solution([10000, 9999, 0, 0, 0], 19999);
-console.log(r4);
-
-console.log();
+// const r1 = solution([1, 2, 3, 4, 8], 6);
+// console.log(r1);
+//
+// const r2 = solution([2, 3, 5, 9], 10);
+// console.log(r2);
+//
+// const r3 = solution([1, 2, 1, 2, 1], 100);
+// console.log(r3);
+//
+// const r4 = solution([10000, 9999, 0, 0, 0], 19999);
+// console.log(r4);
+//
+// console.log();
 
 /**
  * 주어진 데이터들의 빈도수를 정렬하는 방법.
@@ -55,7 +55,7 @@ function countSort(arr, target) {
 
 /**
  * TC
- * O(N^2) 완전탐색 로직에서 
+ * O(N^2) 완전탐색 로직에서
  * 뒷 인덱스를 빈도수로 맵핑된 해시테이블을 이용하여 O(N)으로 처리.
  * n 을 맵핑하고, 차 인 target - n 이 이미 맵핑되어있으면 성공!
  * @param {number[]} arr
@@ -76,14 +76,44 @@ function solution1(arr, target) {
     return false;
 }
 
-const r5 = solution1([1, 2, 3, 4, 8], 6);
-console.log(r5);
+// const r5 = solution1([1, 2, 3, 4, 8], 6);
+// console.log(r5);
+//
+// const r6 = solution1([2, 3, 5, 9], 10);
+// console.log(r6);
+//
+// const r7 = solution1([1, 2, 1, 2, 1], 100);
+// console.log(r7);
+//
+// const r8 = solution1([10000, 9999, 0, 0, 0], 19999);
+// console.log(r8);
+// console.log();
 
-const r6 = solution1([2, 3, 5, 9], 10);
-console.log(r6);
+function solution2(arr, target) {
+    const ht = {};
+    for (const n of arr) {
+        if (!ht[n]) ht[n] = 1
+        else ht[n]++
+    }
 
-const r7 = solution1([1, 2, 1, 2, 1], 100);
-console.log(r7);
+    for (let i = 0; i < arr.length; i++) {
+        const n = arr[i];
+        const a = target - n;
+        if (a === n) continue;
+        if (ht[a] && ht[n]) return true
+    }
+    return false
+}
 
-const r8 = solution1([10000, 9999, 0, 0, 0], 19999);
-console.log(r8);
+const r10 = solution2([1, 2, 3, 4, 8], 6);
+console.log(r10);
+
+const r11 = solution2([2, 3, 5, 9], 10);
+console.log(r11);
+
+const r12 = solution2([1, 2, 1, 2, 1], 100);
+console.log(r12);
+
+const r13 = solution2([10000, 9999, 0, 0, 0], 19999);
+console.log(r13);
+console.log();
