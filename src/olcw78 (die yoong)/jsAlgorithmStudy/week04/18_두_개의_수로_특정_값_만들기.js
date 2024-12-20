@@ -89,16 +89,24 @@ function solution1(arr, target) {
 // console.log(r8);
 // console.log();
 
+// TC: O(N)
+// n, target-n 을 hash table 에서 찾기 -> O(1)
+// arr.length 만큼 loop -> O(N)
 function solution2(arr, target) {
     const ht = {};
+    // arr 의 모든 원소의 갯수를 맵핑
     for (const n of arr) {
         if (!ht[n]) ht[n] = 1
         else ht[n]++
     }
 
+    // arr에서 target이 될 수 있는 수가 2개 존재하는지를 알기 위해서
     for (let i = 0; i < arr.length; i++) {
+        // n과 target-n 이 해시테이블에 존재하는지 체크.
         const n = arr[i];
         const a = target - n;
+
+        // 다만 n과 target-n 은 같으면 안됨.
         if (a === n) continue;
         if (ht[a] && ht[n]) return true
     }
