@@ -16,6 +16,13 @@
 // 5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.
 // ※ 공지 - 2019년 2월 28일 지문이 리뉴얼되었습니다.
 
+
+// 1. prices의 길이만큼 반복문을 돌린다.
+// 2. stack에 0을 넣는다.
+// 3. prices[i]와 prices[j]를 비교한다.
+// 4. prices[i]가 prices[j]보다 크면 break를 한다.
+// 5. stack에 push한다.
+
 function solution(prices) {
   let answer = [];
 

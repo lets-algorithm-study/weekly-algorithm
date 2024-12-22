@@ -9,9 +9,9 @@
 
 - FIFO(First In First Out) 구조
 - isFull, isEmpty, push, pop, front, rear, data 등의 메소드를 가진다
-- 선형 Queue를 pop을 할때 데이터를 제거하는 것이 아닌 front를 가리키는 포인터를 이동시키는 것이다.
+- 선형 Queue를 pop을 할때 데이터를 제거하는 것이 아닌 front를 가리키는 cursor를 이동시키는 것이다.
 - 이를 개선한 것이 원형큐이다.
-- 자바스크립트에서는 내장된 메소드가 없어서 배열로 구현한다
+- 자바스크립트에서는 구현체가 없어서 배열로 구현한다
 - 하지만 배열로 구현할 경우 배열의 메소드를 사용할 수 있어서 편리하다
 
 
@@ -91,7 +91,5 @@ class Queue {
     isEmpty() {
         return this.size === 0;
     }
-  
-
 }
 ```
