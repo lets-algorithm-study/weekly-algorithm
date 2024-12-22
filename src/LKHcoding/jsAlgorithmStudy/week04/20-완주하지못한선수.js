@@ -9,7 +9,7 @@ function answer(participant, completion) {
   for (const item of participant) {
     if (map.get(item) === undefined) {
       result.push(item);
-      continue;
+      break;
     }
 
     if (map.get(item) !== 0) {

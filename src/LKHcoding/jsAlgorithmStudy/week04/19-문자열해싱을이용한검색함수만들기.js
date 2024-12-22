@@ -1,7 +1,7 @@
 // polynomialHash 를 구현
 function polynomialHash(str) {
   const p = 31; // 소수
-  const m = 1000000007; // 버킷 크기
+  const m = 1000000007; // 해시테이블 크기 (모드연산용 상수)
   let hashValue = 0;
 
   for (let i = 0; i < str.length; i++) {
