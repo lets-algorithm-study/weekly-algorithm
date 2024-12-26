@@ -11,5 +11,6 @@ func main() {
 	// week02.Run10()
 
 	// week03.Run14()
-	week05.Run23()
+	// week05.Run23()
+	week05.Run24()
 }

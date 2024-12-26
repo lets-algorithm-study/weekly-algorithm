@@ -21,7 +21,7 @@ type unq struct {
 	plays int
 }
 
-func solution(genres []string, plays []int) []int {
+func solution23(genres []string, plays []int) []int {
 	rank := map[string]record{}
 	for i := 0; i < len(genres); i++ {
 		if _, ok := rank[genres[i]]; !ok {
@@ -69,14 +69,14 @@ func solution(genres []string, plays []int) []int {
 }
 
 func Run23() {
-	r1 := solution(
+	r1 := solution23(
 		[]string{"classic", "pop", "classic", "classic", "pop"},
 		[]int{500, 600, 150, 800, 2500},
 	)
 	fmt.Println(r1)
 	// [4, 1, 3, 0]
 
-	r2 := solution(
+	r2 := solution23(
 		[]string{"classic", "classic", "classic"},
 		[]int{1, 2, 1},
 	)
