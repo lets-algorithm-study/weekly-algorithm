@@ -15,53 +15,86 @@ type reportRecord struct {
 // - 한 유저를 여러번 신고할 수 있지만 동일한 유저에 대한 신고 횟수는 1회로 처리됨.
 // k번 이상 신고된 유저는 정지되며 해당 유저를 신고한 모든 유저에게 정지 사실을 메일로 발송
 // - 유저가 신고한 모든 내용을 취합해 마지막에 한꺼번에 계시판 이용 정지를 시키면서 정지 메일을 발송
+// func solution24(id_list []string, report []string, k int) []int {
+// 	idHt := map[string]int{}
+// 	for i, id := range id_list {
+// 		idHt[id] = i
+// 	}
+// 	history := map[string]reportRecord{}
+// 	ret := make([]int, len(id_list))
+// 	for _, r := range report {
+// 		rsplit := strings.Split(r, " ")
+// 		reporter, reported := rsplit[0], rsplit[1]
+
+// 		if h, ok := history[reported]; !ok {
+// 			history[reported] = reportRecord{
+// 				reportedBy:    map[string]string{reporter: reporter},
+// 				reportedCount: 1,
+// 			}
+// 		} else {
+// 			newRecord := reportRecord{
+// 				reportedBy:    map[string]string{reporter: reporter},
+// 				reportedCount: h.reportedCount,
+// 			}
+
+// 			nextCnt := 0
+// 			if _, ok2 := h.reportedBy[reporter]; ok2 {
+// 				nextCnt = h.reportedCount
+// 			} else {
+// 				nextCnt = h.reportedCount + 1
+// 			}
+
+// 			for _, p := range h.reportedBy {
+// 				newRecord.reportedBy[p] = p
+// 			}
+// 			newRecord.reportedCount = nextCnt
+// 			history[reported] = newRecord
+// 		}
+// 	}
+
+// 	for _, h := range history {
+// 		for _, reporter := range h.reportedBy {
+// 			if h.reportedCount >= k {
+// 				ret[idHt[reporter]]++
+// 			}
+// 		}
+// 	}
+
+// 	return ret
+// }
+
 func solution24(id_list []string, report []string, k int) []int {
-	idHt := map[string]int{}
-	for i, id := range id_list {
-		idHt[id] = i
-	}
-	history := map[string]reportRecord{}
-	ret := make([]int, len(id_list))
+	// 중복 신고 제거를 위한 맵
+	reportSet := make(map[string]bool)
+	// 신고 횟수를 카운트하는 맵
+	reportCount := make(map[string]int)
+	// 신고자별 신고한 사용자 맵
+	userReport := make(map[string][]string)
+
+	// 중복 제거 및 신고 처리
 	for _, r := range report {
-		rsplit := strings.Split(r, " ")
-		reporter := rsplit[0]
-		reported := rsplit[1]
-
-		if h, ok := history[reported]; !ok {
-			history[reported] = reportRecord{
-				reportedBy:    map[string]string{reporter: reporter},
-				reportedCount: 1,
-			}
-		} else {
-			newRecord := reportRecord{
-				reportedBy:    map[string]string{reporter: reporter},
-				reportedCount: h.reportedCount,
-			}
-
-			nextCnt := 0
-			if _, ok2 := h.reportedBy[reporter]; ok2 {
-				nextCnt = h.reportedCount
-			} else {
-				nextCnt = h.reportedCount + 1
-			}
-
-			for _, p := range h.reportedBy {
-				newRecord.reportedBy[p] = p
-			}
-			newRecord.reportedCount = nextCnt
-			history[reported] = newRecord
+		if reportSet[r] {
+			continue
 		}
+		reportSet[r] = true
+
+		spl := strings.Split(r, " ")
+		reporter, reported := spl[0], spl[1]
+		reportCount[reported]++
+		userReport[reporter] = append(userReport[reporter], reported)
 	}
 
-	for _, h := range history {
-		for _, reporter := range h.reportedBy {
-			if h.reportedCount >= k {
-				ret[idHt[reporter]]++
+	// 결과 계산
+	result := make([]int, len(id_list))
+	for i, id := range id_list {
+		for _, reported := range userReport[id] {
+			if reportCount[reported] >= k {
+				result[i]++
 			}
 		}
 	}
 
-	return ret
+	return result
 }
 
 func Run24() {
