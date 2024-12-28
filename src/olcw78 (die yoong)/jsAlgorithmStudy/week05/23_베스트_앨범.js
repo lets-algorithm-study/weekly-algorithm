@@ -18,60 +18,72 @@
  * @param {number[]} plays 
  * @returns {number[]}
  */
-function solution(genres, plays) {
-    // 장르별 총 재생 횟수와 곡 정보를 저장할 객체
-    /** @type {{ count:number, songs: { index:number, plays:number }[] }} */
+// Record 클래스 대신 객체 리터럴 사용
+function solution23(genres, plays) {
+    /** @type {{count: number, unq: { index:number, plays:number}[]}} */
     const rank = {};
 
-    // 데이터 구성
+    // 장르별 재생 횟수와 고유번호 기록
     for (let i = 0; i < genres.length; i++) {
         const g = genres[i];
         const p = plays[i];
         if (!rank[g]) {
             rank[g] = {
                 count: p,
-                songs: [{ index: i, plays: p }]
+                unq: [{ index: i, plays: p }]
             };
         } else {
-            rank[g].count += p;
-            rank[g].songs.push({ index: i, plays: p });
+            const r = rank[g];
+            rank[g] = {
+                count: r.count + p,
+                unq: [...r.unq, { index: i, plays: p }]
+            };
         }
     }
 
-    // 장르별 재생 횟수로 정렬된 배열 생성
-    const genreRank = Object.values(rank).sort((a, b) => b.count - a.count);
+    // 배열로 변환하여 정렬
+    const buf = Object.values(rank);
+    // 장르별 총 재생 횟수로 정렬
+    buf.sort((a, b) => b.count - a.count);
+
+    // 각 장르 내의 노래들을 재생 횟수로 정렬
+    for (const e of buf) {
+        e.unq.sort((a, b) => b.plays - a.plays);
+    }
 
     // 결과 배열 생성
-    const answer = [];
-    for (const genre of genreRank) {
-        // 각 장르 내에서 노래들을 재생 횟수로 정렬
-        genre.songs.sort((a, b) => b.plays - a.plays);
+    const ret = [];
+    for (const b of buf) {
+        let slice = null;
+        if (b.unq.length === 1) {
+            slice = b.unq.slice(0, 1);
+        } else {
+            slice = b.unq.slice(0, 2);
+        }
 
-        // 상위 2개 곡의 인덱스만 결과 배열에 추가
-        answer.push(genre.songs[0].index);
-        if (genre.songs.length > 1) {
-            answer.push(genre.songs[1].index);
+        for (const s of slice) {
+            ret.push(s.index);
         }
     }
 
-    return answer;
+    return ret;
 }
 
-// 테스트
-function run() {
-    console.log(
-        solution(
-            ["classic", "pop", "classic", "classic", "pop"],
-            [500, 600, 150, 800, 2500]
-        )
-    ); // [4, 1, 3, 0]
+function Run23() {
+    const r1 = solution23(
+        ["classic", "pop", "classic", "classic", "pop"],
+        [500, 600, 150, 800, 2500]
+    );
+    console.log(r1);
+    // [4, 1, 3, 0]
 
-    console.log(
-        solution(
-            ["classic", "classic", "classic"],
-            [1, 2, 1]
-        )
-    ); // [1, 0]
+    const r2 = solution23(
+        ["classic", "classic", "classic"],
+        [1, 2, 1]
+    );
+    console.log(r2);
+    // [1, 0]
 }
 
-run();
+// 실행
+Run23();

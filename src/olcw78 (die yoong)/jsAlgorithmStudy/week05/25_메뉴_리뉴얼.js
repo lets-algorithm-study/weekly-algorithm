@@ -1,3 +1,5 @@
+// "ABCFG"
+// [A B C F G]
 function makeCombination(arr, n) {
     if (n === 1) return arr.map(x => [x]);
 
@@ -26,6 +28,7 @@ function solution(orders, course) {
             const combis = makeCombination(spl, c);
             menu.push(...combis);
         }
+
         // console.log(menu);
         const candidates = {};
         for (const m of menu) {

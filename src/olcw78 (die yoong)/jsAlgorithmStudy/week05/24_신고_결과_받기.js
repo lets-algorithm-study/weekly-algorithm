@@ -23,7 +23,46 @@
  * @param {number} k 
  * @returns 
  */
-function solution24(id_list, report, k) {
+function solution24_2(id_list, report, k) {
+    const result = new Array(id_list.length).fill(0);
+    // 중복 신고 제거를 위한 Set
+    const reportSet = new Set();
+    // 신고 횟수를 카운트하는 Map
+    const reportCount = new Map();
+    // 신고자별 신고한 사용자 Map
+    const userReport = new Map();
+
+    // 중복 제거 및 신고 처리
+    for (const r of report) {
+        if (reportSet.has(r)) {
+            continue;
+        }
+        reportSet.add(r);
+
+        const [reporter, reported] = r.split(" ");
+        reportCount.set(reported, (reportCount.get(reported) || 0) + 1);
+
+        if (!userReport.has(reporter)) {
+            userReport.set(reporter, []);
+        }
+        userReport.get(reporter).push(reported);
+    }
+
+    // 결과 계산
+    for (let i = 0; i < id_list.length; i++) {
+        const id = id_list[i];
+        const reportedUsers = userReport.get(id) || [];
+        for (const reported of reportedUsers) {
+            if ((reportCount.get(reported) || 0) >= k) {
+                result[i]++;
+            }
+        }
+    }
+
+    return result;
+}
+
+function solution24_2(id_list, report, k) {
     // ID를 인덱스로 매핑하는 객체 생성
     const idMap = {};
     for (const [i, id] of id_list.entries()) {

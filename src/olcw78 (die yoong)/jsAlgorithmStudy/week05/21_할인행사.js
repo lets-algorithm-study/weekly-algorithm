@@ -11,11 +11,11 @@
  * 10 <= discount.length <= 100,000 으로 보아
  * O(N^2)는 꿈도 못꿈
  * 
- * TC: O(N + M)
+ * TC: O(N * M)
  * [0: discount.length - 10 + 1] 개 -> O(N)
  * 내부 loop의 stride 10 -> O(1)
  * want, number -> O(M)
- * 따라서 O(N + M)
+ * 따라서 O(N * M)
  * 
  * SC: O(N)
  * 내부 10개짜리 object -> O(N)
@@ -36,8 +36,7 @@ function solution(want, number, discount) {
         // 검사할 일자로 부터 10일간의 할인 품목을 {[할인 품목]: 갯수 } 로 담음
         for (let stride = 0; stride < 10; stride++) {
             const k = discount[i + stride];
-            if (!slice[k]) slice[k] = 1;
-            else slice[k] += 1;
+            slice[k] = (slice[k] || 1) + 1;
         }
 
         let match = true;

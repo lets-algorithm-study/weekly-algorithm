@@ -13,11 +13,9 @@
  */
 function solution(record) {
     const nicknameHistory = {};
-    for (const r of record) {
-        const e = r.split(" ");
-        const cmd = e[0];
-        const uid = e[1];
-        const nickname = e[2];
+    const recordStr = record.map(r => r.split(" "));
+
+    for (const [cmd, uid, nickname] of recordStr) {
         // Leave 아니면 닉네임 맵에 갱신
         if (cmd !== "Leave") {
             nicknameHistory[uid] = nickname;
@@ -25,16 +23,13 @@ function solution(record) {
     }
 
     let messages = [];
-    for (const r of record) {
-        const [cmd, uid] = r.split(" ");
-        let sentence = "";
+    for (const [cmd, uid] of recordStr) {
+        const h = nicknameHistory[uid];
         // 이제 문자열을 만들기 위해 저장한 닉네임 맵을 참조.
         if (cmd === "Enter") {
-            sentence += nicknameHistory[uid] + "님이 들어왔습니다."
-            messages.push(sentence);
+            messages.push(h + "님이 들어왔습니다.");
         } else if (cmd === "Leave") {
-            sentence += nicknameHistory[uid] + "님이 나갔습니다."
-            messages.push(sentence);
+            messages.push(h + "님이 나갔습니다.");
         }
     }
     return messages;
