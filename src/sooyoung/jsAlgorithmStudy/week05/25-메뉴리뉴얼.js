@@ -43,10 +43,15 @@
 // 입출력 예에 대한 설명
 
 function solution(orders, course) {
+  // orders 배열의 각 원소를 정렬
   const answer = [];
+
+  // course 배열의 각 원소에 대해
   for (let i = 0; i < course.length; i++) {
+    // course[i]개의 단품메뉴로 구성된 조합을 저장할 객체 생성
     const map = {};
     let max = 0;
+
     orders.forEach(v => {
       Combinations(v.split(''), course[i]).forEach(x => {
         if (!map[x]) map[x] = 1;
@@ -63,11 +68,14 @@ function solution(orders, course) {
 
   return answer.sort();
 }
+
+// 조합을 구하는 함수
 const Combinations = (arr, num) => {
   const results = [];
 
   if (num === 1) return arr.map(v => [v]);
 
+  // 재귀적으로 조합을 구함
   arr.forEach((select, i, origin) => {
     const remainder = origin.slice(i + 1);
     const combinations = Combinations(remainder, num - 1);
