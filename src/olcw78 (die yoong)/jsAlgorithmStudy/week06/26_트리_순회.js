@@ -13,6 +13,7 @@ function solution(nodes) {
 
 // [1, 2, 3, 4, 5, 6, 7]
 function preorder(nodes, i) {
+    // M -> L -> R
     if (i < nodes.length) {
         let ret = `${nodes[i]} `;
         ret += preorder(nodes, i * 2 + 1);
