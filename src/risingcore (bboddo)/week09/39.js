@@ -85,7 +85,7 @@ const solution = (graph, start) => {
       result.push(node);
       // 인접한 노드가 있다면 큐에 추가
       if (edges[node]) {
-        const neighbors = edges[node].filter((n) => !visited.has(n));
+        const neighbors = edges[node].filter(n => !visited.has(n));
         queue.push(...neighbors);
       }
     }
@@ -93,6 +93,8 @@ const solution = (graph, start) => {
 
   return result;
 };
+
+// 스택에서 lifo 를 사용해서 마지막 노드를 꺼내오는 방식으로 사용햇습니다.
 
 console.log(solution(input1.graph, input1.start));
 console.log(solution(input2.graph, input2.start));

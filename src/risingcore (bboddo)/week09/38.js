@@ -125,6 +125,9 @@ const soulution = (graph, start) => {
   return visited;
 };
 
+// 반복적 방식을 사용한 이유는 메모리 관리가 더 용이하고,
+// 재귀적은 메모리 관리가 어렵고, 스택 오버플로우가 발생할 수 있기에 사용했습니다.
+
 console.log(soulution(input1.graph, input1.start)); // ['A','B','C','D','E']
 console.log(soulution(input2.graph, input2.start)); // ['A','B','D','E','F','C']
 console.log(soulution(input3.graph, input3.start)); // ['A','B','D','E','C','F','G']
