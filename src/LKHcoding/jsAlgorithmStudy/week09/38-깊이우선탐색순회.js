@@ -57,16 +57,12 @@ function answer(graph, start) {
   const visited = new Set();
   const stack = [start];
 
-  while (true) {
+  while (stack.length) {
     const curNode = stack.pop();
     visited.add(curNode);
     result.push(curNode);
 
-    if (!Array.isArray(adjList[curNode])) {
-      break;
-    }
-
-    adjList[curNode].forEach(child => {
+    adjList[curNode]?.forEach(child => {
       if (!visited.has(child)) {
         stack.push(child);
       }
