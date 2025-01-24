@@ -1,10 +1,11 @@
 function solution(graph, start) {
   const q = [start];
   const visited = new Set();
-  visited.add(start);
+  visited.add(start); // 첫 원소는 방문하고 시작
 
   const res = [];
   const adjList = {};
+  // 인접 리스트로 변환
   for (const [from, to] of graph) {
     if (!adjList[from]) adjList[from] = [];
     adjList[from].push(to);
@@ -14,7 +15,10 @@ function solution(graph, start) {
     const cur = q.shift();
     res.push(cur);
 
+    // 인접 노드가 없으면 탈출
     if (!adjList[cur]) continue;
+
+    // 모든 인접노드들을 전부 추가 하고 다음으로 넘어감
     for (const adj of adjList[cur]) {
       if (!visited.has(adj)) {
         visited.add(adj);
