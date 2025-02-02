@@ -66,3 +66,35 @@ const graph2 = [
 ];
 
 console.log('테스트 케이스 2:', solution(graph2, 0));
+
+function answer(graph, source) {
+  const graphLength = graph.length;
+
+  const distance = new Array(graphLength).fill(Infinity);
+  const predecessor = new Array(graphLength).fill(null);
+
+  distance[source] = 0;
+
+  for (let _i = 0; _i < graphLength - 1; _i++) {
+    for (let j = 0; j < graphLength; j++) {
+      for (const [nextNode, weight] of graph[j]) {
+        if (distance[j] + weight < distance[nextNode]) {
+          distance[nextNode] = distance[j] + weight;
+          predecessor[nextNode] = j;
+        }
+      }
+    }
+  }
+
+  for (let j = 0; j < graphLength; j++) {
+    for (const [nextNode, weight] of graph[j]) {
+      if (distance[j] + weight < distance[nextNode]) {
+        return [-1];
+      }
+    }
+  }
+
+  return [distance, predecessor];
+}
+
+console.log('테스트 케이스 1:', answer(graph1, 0));
