@@ -1,7 +1,6 @@
 // MinHeap 클래스 정의
 const { MinHeap } = require('./min_heap');
 
-
 function solution(graph, start) {
   const distances = {}; // 시작 노드로부터의 거리를 저장
   for (const node in graph) {
@@ -9,6 +8,7 @@ function solution(graph, start) {
   }
   distances[start] = 0; // 시작 노드의 거리는 0
 
+  // [거리, 노드]
   const heap = new MinHeap();
   heap.insert([distances[start], start]); // 시작 노드를 힙에 삽입
 
@@ -31,11 +31,11 @@ function solution(graph, start) {
   }
 
   const sortedPaths = {};
-  Object.keys(paths)
-    .sort()
-    .forEach(node => {
-      sortedPaths[node] = paths[node];
-    });
+  const pathsKeys = Object.keys(paths);
+  pathsKeys.sort();
+  for (const node of pathsKeys) {
+    sortedPaths[node] = paths[node];
+  }
 
   return [distances, sortedPaths];
 }
