@@ -3,7 +3,7 @@ function solution(n, words) {
   prevWord = words[0][0]; // ➋ 이전 단어의 마지막 글자
   for (i = 0; i < words.length; i++) {
     word = words[i];
-    // ➌ 이미 사용한 단어거나 첫 글자가 이전 단어와 일치하지 않으면
+
     if (usedWords.has(word) || word[0] != prevWord) {
       // ➍ 탈락하는 사람의 번호와 차례를 반환
       return [(i % n) + 1, Math.floor(i / n) + 1];
