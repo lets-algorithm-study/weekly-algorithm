@@ -25,22 +25,6 @@
 // 첫 번째 입출력을 봅시다. 현재 피로도는 80 입니다. 만약 첫 번째 -* 두 번째 -* 세 번째 순서로 던
 // 전을 탐험하면 다음과 같이 피로도의 총량을 계산할 수 있습니다.
 
-const solution = (k, dungeons) => {
-  let maxDungeon = 0;
-  const backtrack = (sum, start) => {
-    if (sum > k) {
-      return;
-    }
-    maxDungeon = Math.max(maxDungeon, start);
-    for (let i = start; i < dungeons.length; i++) {
-      backtrack(sum + dungeons[i][0] - dungeons[i][1], i + 1);
-    }
-  };
-
-  backtrack(0, 0);
-  return maxDungeon;
-};
-
 function dfs(curk, cnt, dungeons, visited) {
   let answerMax = cnt;
   for (let i = 0; i < dungeons.length; i++) {
@@ -58,7 +42,6 @@ function dfs(curk, cnt, dungeons, visited) {
 
 function solution(k, dungeons) {
   const visited = Array(dungeons.length).fill(0);
-
   const answerMax = dfs(k, 0, dungeons, visited);
   return answerMax;
 }

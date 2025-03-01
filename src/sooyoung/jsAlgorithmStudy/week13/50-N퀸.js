@@ -6,36 +6,6 @@
 // 4
 // result
 
-const solution = n => {
-  let count = 0;
-  const cols = Array(n).fill(false);
-  const diags1 = Array(2 * n - 1).fill(false);
-  const diags2 = Array(2 * n - 1).fill(false);
-
-  const backtrack = row => {
-    if (row === n) {
-      count++;
-      return;
-    }
-
-    for (let col = 0; col < n; col++) {
-      const diag1 = row + col;
-      const diag2 = n - 1 + row - col;
-
-      if (cols[col] || diags1[diag1] || diags2[diag2]) {
-        continue;
-      }
-
-      cols[col] = diags1[diag1] = diags2[diag2] = true;
-      backtrack(row + 1);
-      cols[col] = diags1[diag1] = diags2[diag2] = false;
-    }
-  };
-
-  backtrack(0);
-  return count;
-};
-
 function search(n, y, width, diagonal1, diagonal2) {
   let answer = 0;
 
@@ -46,11 +16,8 @@ function search(n, y, width, diagonal1, diagonal2) {
       if (width[i] || diagonal1[i + y] || diagonal2[i - y + n]) {
         continue;
       }
-
       width[i] = diagonal1[i + y] = diagonal2[i - y + n] = true;
-
       answer += search(n, y + 1, width, diagonal1, diagonal2);
-
       width[i] = diagonal1[i + y] = diagonal2[i - y + n] = false;
     }
   }
